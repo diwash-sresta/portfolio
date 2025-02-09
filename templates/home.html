@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="text-center py-5">
+    <h1 class="display-4" data-aos="fade-up">Welcome to My Portfolio</h1>
+    <p class="lead" data-aos="fade-up" data-aos-delay="200">Showcasing My Projects & Skills</p>
+    <a href="{% url 'projects' %}" class="btn btn-primary btn-lg" data-aos="zoom-in" data-aos-delay="400">View My Work</a>
+</div>
+
+<!-- Portfolio Grid -->
+<div class="row mt-5">
+    <div class="col-md-4" data-aos="fade-up">
+        <div class="card">
+            <img src="{% static 'images/project1.png' %}" class="card-img-top" alt="Project 1">
+            <div class="card-body">
+                <h5 class="card-title">To-do List</h5>
+                <p class="card-text">Track your tasks.</p>
+                <a href="https://to-do-list-jatk.onrender.com/" class="btn btn-outline-primary">View</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="card">
+            <img src="{% static 'images/project2.png' %}" class="card-img-top" alt="Project 2">
+            <div class="card-body">
+                <h5 class="card-title">Author List</h5>
+                <p class="card-text">The list of the authors.</p>
+                <a href="#" class="btn btn-outline-primary">View</a>
+            </div>
+        </div>
+    </div>
+
+    {% comment %} <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+        <div class="card">
+            <img src="{% static 'images/project3.jpg' %}" class="card-img-top" alt="Project 3">
+            <div class="card-body">
+                <h5 class="card-title">Project Three</h5>
+                <p class="card-text">A brief description of the project.</p>
+                <a href="#" class="btn btn-outline-primary">View</a>
+            </div>
+        </div>
+    </div> {% endcomment %}
+</div>
+{% endblock %}
