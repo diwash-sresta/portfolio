@@ -1,21 +1,92 @@
+/* Custom Theme */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #f8f9fa;
+    --text-color: #333;
+}
+
+/* General Styles */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--primary-color);
+}
+
+.navbar a {
+    color: rgb(0, 0, 0);
+}
+
+.navbar a:hover {
+    color: #000000;
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.footer-links a {
+    color: white;
+}
+
+.footer-links a:hover {
+    color: #f8f9fa;
+}
+
+/* Cards */
 .card {
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+    border-radius: 15px;
 }
 
 .card:hover {
     transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
+.card-img-top {
+    transition: opacity 0.3s ease;
+}
+
+.card-img-top:hover {
+    opacity: 0.8;
+}
+
+/* Buttons */
 .btn {
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
+    border-radius: 5px;
 }
 
-.btn:hover {
+.btn-outline-primary {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
     background-color: #0056b3;
-    color: white;
+    border-color: #0056b3;
 }
 
-/* Resume Page Styling */
+/* Resume Page */
 .resume-container {
     max-width: 80%;
     background: #fff;
@@ -25,14 +96,13 @@
 }
 
 .resume-frame {
-    border: 2px solid #007bff;
+    border: 2px solid var(--primary-color);
     border-radius: 8px;
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Styled Download Button */
 .resume-download {
-    background: linear-gradient(135deg, #007bff, #0056b3);
+    background: linear-gradient(135deg, var(--primary-color), #0056b3);
     border: none;
     padding: 12px 24px;
     font-size: 18px;
@@ -46,214 +116,24 @@
     transform: scale(1.05);
 }
 
-/* Resume Page Custom Styles */
-h1 {
+/* Typography */
+h1,
+h2,
+h3 {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     color: var(--primary-color);
-    /* Use primary theme color */
 }
 
 p {
     font-family: 'Roboto', sans-serif;
     font-size: 1.1rem;
-    color: #6c757d;
+    color: var(--secondary-color);
 }
 
-iframe {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    /* Soft shadow around the iframe */
-}
-
-/* Button Hover Effect */
-.btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-}
-
-/* Responsive Design for Mobile */
-@media (max-width: 768px) {
-    iframe {
-        width: 90%;
-    }
-
-    .container {
-        padding: 20px;
-    }
-}
-
-
-/* styles.css */
-:root {
-    --primary-color: #007bff;
-    /* Blue accents */
-    --background-color: #f4f6f9;
-    /* Light background */
-    --text-color: #333;
-    /* Dark text for readability */
-}
-
-body {
-    background-color: var(--background-color);
-    color: var(--text-color);
-}
-
-.navbar {
-    background-color: var(--primary-color);
-}
-
-.navbar a {
-    color: white;
-}
-
-.navbar a:hover {
-    color: #f8f9fa;
-}
-
-footer {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.footer-links a {
-    color: white;
-}
-
-.footer-links a:hover {
-    color: #f8f9fa;
-}
-
-/* General Layout Enhancements */
-.container {
-    max-width: 1200px;
-}
-
-.card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
-    border-radius: 15px;
-}
-
-.card:hover {
-    transform: translateY(-15px);
-    /* Lift effect */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-    /* Deeper shadow */
-}
-
-.card-img-top {
-    transition: opacity 0.3s ease;
-}
-
-.card-img-top:hover {
-    opacity: 0.8;
-}
-
-/* Typography */
-h1.display-4 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-.card-title {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 1.25rem;
-}
-
-.card-text {
-    font-size: 1rem;
-    line-height: 1.6;
-    font-family: 'Roboto', sans-serif;
-}
-
-/* Button Style */
-.btn-outline-primary {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-    font-weight: 500;
-}
-
-.btn-outline-primary:hover {
-    background-color: var(--primary-color);
-    color: #fff;
-}
-
-/* AOS Animations */
-[data-aos="fade-up"] {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-[data-aos="fade-up"].aos-animate {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .col-md-6 {
-        flex: 1 0 100%;
-        margin-bottom: 20px;
-    }
-}
-
-/* Background Gradient */
-body {
-    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-}
-
-/* Hover Effects & Button Animations */
-.btn {
-    position: relative;
-    overflow: hidden;
-    border-radius: 5px;
-    padding: 0.5rem 1.5rem;
-}
-
-.btn-outline-primary {
-    background-color: transparent;
-    border: 2px solid var(--primary-color);
-}
-
-.btn-outline-primary:before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    background-color: var(--primary-color);
-    transition: width 0.4s ease, height 0.4s ease, top 0.4s ease, left 0.4s ease;
-    border-radius: 50%;
-    z-index: 0;
-    transform: translate(-50%, -50%);
-}
-
-.btn-outline-primary:hover:before {
-    width: 0;
-    height: 0;
-    top: 50%;
-    left: 50%;
-}
-
-.btn-outline-primary:hover {
-    color: #fff;
-    border-color: var(--primary-color);
-}
-
-/* Contact Form Custom Styles */
-h1 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    color: var(--primary-color);
-    /* Primary theme color */
-}
-
+/* Contact Form */
 form {
     background-color: #f8f9fa;
-    /* Light background for the form */
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -268,18 +148,31 @@ textarea {
 
 textarea {
     resize: vertical;
-    /* Allow vertical resizing only */
 }
 
-/* Button Hover Effect */
-.btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
+/* Animations */
+[data-aos="fade-up"] {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+[data-aos="fade-up"].aos-animate {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    form {
+    .resume-container {
+        max-width: 90%;
+    }
+
+    .container {
         padding: 20px;
+    }
+
+    iframe {
+        width: 90%;
     }
 }
