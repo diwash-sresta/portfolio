@@ -1,9 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render ,redirect
 from .models import Project
 from django.core.mail import send_mail
 from django.contrib import messages
-from django import forms
-from django.conf import settings
+
 
 
 
@@ -22,39 +21,29 @@ def projects(request):
 def resume(request):
     return render(request, 'resume.html')
 
-# Contact Form using Django Forms (adds validation)
-class ContactForm(forms.Form):
-    name = forms.CharField(max_length=100, required=True)
-    email = forms.EmailField(required=True)
-    message = forms.CharField(widget=forms.Textarea, required=True)
+
 
 def contact(request):
     if request.method == "POST":
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data["name"]
-            email = form.cleaned_data["email"]
-            message = form.cleaned_data["message"]
+        name = request.POST.get("name", "").strip()
+        email = request.POST.get("email", "").strip()
+        message = request.POST.get("message", "").strip()
 
-            subject = f"New Contact Form Submission from {name}"
-            body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+        if not name or not email or not message:
+            messages.error(request, "All fields are required!")
+            return redirect("contact")  # Redirect to the same page
 
-            try:
-                send_mail(
-                    subject,
-                    body,
-                    settings.EMAIL_HOST_USER,  # Secure email settings
-                    ["your_email@gmail.com"],  # Receiver email
-                    fail_silently=False,
-                )
-                messages.success(request, "Message sent successfully!")
-                return redirect("contact")  # Redirect only after successful submission
-            except Exception as e:
-                messages.error(request, f"Error sending message: {e}")
-        else:
-            messages.error(request, "Please fill in all fields correctly.")
+        # Email details
+        subject = f"New Contact Message from {name}"
+        body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+        recipient_email = "diwashshrestha108@gmail.com"  # Replace with your email
 
-    else:
-        form = ContactForm()
+        try:
+            send_mail(subject, body, email, [recipient_email])
+            messages.success(request, "Your message has been sent successfully!")
+        except Exception as e:
+            messages.error(request, f"Failed to send message: {e}")
 
-    return render(request, "contact.html", {"form": form})
+        return redirect("contact")  # Redirect after processing
+
+    return render(request, "contact.html")
