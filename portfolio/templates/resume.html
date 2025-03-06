@@ -1,5 +1,29 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block content %}
-<h1 class="text-center animate__animated animate__fadeIn">Resume</h1>
-<p class="text-center">Download my resume <a href="{% static 'resume.pdf' %}" class="btn btn-success">Here</a></p>
+<div class="container my-2 text-center">
+    <h1 class="animate__animated animate__fadeIn fw-bold display-4 text-primary" data-aos="fade-up">My Resume</h1>
+    <p class="text-muted mb-4" data-aos="fade-up" data-aos-delay="200">Here is my resume. You can view or download it below.</p>
+
+    <!-- Embedded Resume Preview -->
+    <div class="d-flex justify-content-center mb-5" data-aos="fade-up">
+        <iframe src="{% static 'resumes/diwashcv1.pdf' %}" width="80%" height="700px" style="border: none; border-radius: 10px;"></iframe>
+    </div>
+
+    <!-- Resume Download Button -->
+    <div class="my-3" data-aos="fade-up" data-aos-delay="400">
+        <h3 class="text-dark">Click here to Download my Resume</h3>
+        <a href="{% static 'resumes/diwashcv.pdf' %}" class="btn btn-primary btn-lg" download="diwashcv.pdf">
+            <i class="fas fa-download"></i> Download Resume
+        </a>
+    </div>
+</div>
+
+<!-- AOS Animation Library -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init(); // Initialize animations
+</script>
+
 {% endblock %}

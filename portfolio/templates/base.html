@@ -5,16 +5,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Diwash Shrestha | Portfolio{% endblock %}</title>
+    
+    <!-- Bootstrap & Custom Styles -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- AOS Animation CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+    <style>
+        /* Full height layout with sticky footer */
+        html, body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background-color: #f8f9fa;
+        }
+    
+        main {
+            flex: 1;
+            padding-top: 70px;
+        }
+    
+        /* Navbar Styling */
+        .navbar {
+            background: white;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+    
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.9);
+        }
+    
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #000;
+        }
+    
+        .navbar-brand img {
+            margin-right: 10px;
+            height: 35px;
+            width: auto;
+        }
+    
+        .navbar-light .navbar-nav .nav-link {
+            font-weight: 500;
+            color: #000 !important;
+            transition: 0.3s ease-in-out;
+        }
+    
+        .navbar-light .navbar-nav .nav-link:hover {
+            color: #007bff !important;
+        }
+    
+        .navbar-toggler-icon {
+            color: #000;
+        }
+    
+        /* Footer Styling */
+        footer {
+            background: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9rem;
+        }
+    
+        .footer-icons {
+            margin-top: 10px;
+        }
+    
+        .footer-icons a {
+            color: white;
+            font-size: 20px;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+    
+        .footer-icons a:hover {
+            color: #007bff;
+        }
+    </style>
 </head>
+
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="{% url 'homepage' %}">Diwash Shrestha</a>
+            <a class="navbar-brand" href="{% url 'homepage' %}">
+                <img src="{% static 'images/logo.png' %}" alt="Logo"> Diwash Shrestha
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -22,7 +110,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="{% url 'homepage' %}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'projects' %}">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'projects' %}">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'resume' %}">Resume</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
                 </ul>
@@ -36,14 +124,42 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3">
+    <footer>
         <p>&copy; 2025 Diwash Shrestha | All Rights Reserved</p>
+        <div class="footer-icons">
+            <a href="https://facebook.com/yourprofile" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/yourprofile" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
     </footer>
 
     <!-- Bootstrap & JS -->
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    
+    <!-- AOS Animation Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
         AOS.init();
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
 </body>
 </html>

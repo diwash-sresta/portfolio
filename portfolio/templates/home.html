@@ -1,45 +1,78 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="text-center py-5">
-    <h1 class="display-4" data-aos="fade-up">Welcome to My Portfolio</h1>
-    <p class="lead" data-aos="fade-up" data-aos-delay="200">Showcasing My Projects & Skills</p>
-    <a href="{% url 'projects' %}" class="btn btn-primary btn-lg" data-aos="zoom-in" data-aos-delay="400">View My Work</a>
-</div>
 
-<!-- Portfolio Grid -->
-<div class="row mt-5">
-    <div class="col-md-4" data-aos="fade-up">
-        <div class="card">
-            <img src="{% static 'images/Screenshot_2025-02-08_090455.png' %}" class="card-img-top" alt="Project 1">
-            <div class="card-body">
-                <h5 class="card-title">To-do List</h5>
-                <p class="card-text">Track your tasks.</p>
-                <a href="#" class="btn btn-outline-primary">View</a>
+<section id="portfolio" class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Left Column: Portfolio Intro -->
+            <div class="col-md-4 text-center border-end pe-4" data-aos="fade-right">
+                <h1 class="fw-bold display-4 text-primary">Portfolio</h1>
+                <h2 class="fw-bold text-dark">I'm <span class="text-primary">Diwash Shrestha</span></h2>
+                <p class="text-muted fs-5">A passionate developer crafting digital experiences.</p>
+                <a href="{% url 'projects' %}" class="btn btn-outline-primary btn-lg mt-3" data-aos="zoom-in">Explore More</a>
+            </div>
+
+            <!-- Right Column: Portfolio Grid -->
+            <div class="col-md-8">
+                <div class="row g-4">
+                    <!-- Project 1 -->
+                    <div class="col-md-6" data-aos="fade-up">
+                        <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+                            <img src="{% static 'images/project1.png' %}" class="card-img-top project-img" alt="Project 1">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold text-primary">To-do List</h5>
+                                <p class="card-text text-muted">Track your tasks efficiently.</p>
+                                <a href="https://to-do-list-jatk.onrender.com/" class="btn btn-primary btn-sm">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    {% comment %} <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+                            <img src="{% static 'images/project2.png' %}" class="card-img-top project-img" alt="Project 2">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold text-primary">Author List</h5>
+                                <p class="card-text text-muted">Browse the list of authors.</p>
+                                <a href="#" class="btn btn-primary btn-sm">View Project</a>
+                            </div>
+                        </div>
+                    </div> {% endcomment %}
+
+                    <!-- Project 3 -->
+                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+                            <img src="{% static 'images/project3.png' %}" class="card-img-top project-img" alt="Project 3">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold text-primary">QuizMaster</h5>
+                                <p class="card-text text-muted">Test your knowledge with the QuizMaster.</p>
+                                <a href="https://quiz-project-8n5d.onrender.com/" class="btn btn-primary btn-sm">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add more projects here -->
+                </div>
             </div>
         </div>
     </div>
+</section>
 
-    <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-        <div class="card">
-            <img src="{% static 'images/project2.jpg' %}" class="card-img-top" alt="Project 2">
-            <div class="card-body">
-                <h5 class="card-title">Project Two</h5>
-                <p class="card-text">A brief description of the project.</p>
-                <a href="#" class="btn btn-outline-primary">View</a>
-            </div>
-        </div>
-    </div>
+<style>
+    .project-img {
+        transition: transform 0.3s ease-in-out;
+    }
+    .project-img:hover {
+        transform: scale(1.05);
+    }
+    .card {
+        transition: all 0.3s ease-in-out;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+</style>
 
-    <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
-        <div class="card">
-            <img src="{% static 'images/project3.jpg' %}" class="card-img-top" alt="Project 3">
-            <div class="card-body">
-                <h5 class="card-title">Project Three</h5>
-                <p class="card-text">A brief description of the project.</p>
-                <a href="#" class="btn btn-outline-primary">View</a>
-            </div>
-        </div>
-    </div>
-</div>
 {% endblock %}
